@@ -18,8 +18,8 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
     - name: Restore dependencies
-      run: nuget restore PurrfectBlog\PurrfectBlog.sln
+      run: nuget restore PurrfectBlog.sln
     - name: Build
-      run: msbuild PurrfectBlog\PurrfectBlog.sln /p:Configuration=Release
+      run: msbuild PurrfectBlog.sln /p:Configuration=Release
     - name: Test
-      run: vstest.console.exe PurrfectBlog.Tests\bin\Release\PurrfectBlog.Tests.dll
+      run: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe PurrfectBlog.Tests\bin\Release\PurrfectBlog.Tests.dll

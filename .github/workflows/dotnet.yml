@@ -16,11 +16,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Restore dependencies
-      run: dotnet restore
-      working-directory: PurrfectBlog
+      run: nuget restore PurrfectBlog\PurrfectBlog.sln
     - name: Build
-      run: dotnet build --no-restore
-      working-directory: PurrfectBlog
+      run: msbuild PurrfectBlog\PurrfectBlog.sln /p:Configuration=Release
     - name: Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: PurrfectBlog.Tests
+      run: vstest.console.exe PurrfectBlog.Tests\bin\Release\PurrfectBlog.Tests.dll

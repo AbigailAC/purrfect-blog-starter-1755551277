@@ -16,8 +16,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Restore dependencies
-      run: nuget restore PurrfectBlog.sln
+      run: nuget restore PurrfectBlog\PurrfectBlog.sln
     - name: Build
-      run: msbuild PurrfectBlog.sln /p:Configuration=Release
+      run: msbuild PurrfectBlog\PurrfectBlog.sln /p:Configuration=Release
     - name: Test
       run: vstest.console.exe PurrfectBlog.Tests\bin\Release\PurrfectBlog.Tests.dll

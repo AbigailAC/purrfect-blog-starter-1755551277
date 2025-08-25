@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\BlogDbContext.cs" />
+    <Compile Include="Models\BlogDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

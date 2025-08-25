@@ -15,7 +15,6 @@ namespace PurrfectBlog.Models
                 new Author { UserName = "Hemingway", HashedPassword = Crypto.HashPassword("TheOldManAndTheSea123!") },
                 new Author { UserName = "Herbert" , HashedPassword = Crypto.HashPassword("LisanAlGaib123!") }
             };
-
             authors.ForEach(a => context.Authors.Add(a));
             context.SaveChanges();
         }

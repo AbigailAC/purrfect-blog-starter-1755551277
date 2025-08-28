@@ -1,0 +1,46 @@
+﻿@model PurrfectBlog.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register a New Account to View the Most Purrfect Place on the Internet!</h2>
+
+<div class="container mx-w-md bg-light rounded-lg my-4">
+    @using (Html.BeginForm("Register", "Auth", FormMethod.Post, new { @class = "space-y-4" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor( m => m.Username, new { @class = "block text-sm text-gray-700"})
+            <div class="my-2">
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm" })
+                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "block text-sm text-gray-700"})
+            <div class="my-2">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "block text-sm text-gray-700" })
+            <div class="my-2">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-black sm:text-sm" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" class="w-full flex-column justify-center py-2 px-4 text-sm mt-4">
+                Register
+            </button>
+        </div>
+    }
+
+</div>
+

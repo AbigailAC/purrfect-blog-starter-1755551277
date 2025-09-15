@@ -18,13 +18,7 @@ namespace PurrfectBlog
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
             Database.SetInitializer(new Models.BlogDbInitializer());
-            using (var context = new BlogDbContext())
-            {
-                // Force database initialization
-                context.Database.Initialize(force: true);
-            }
         }
     }
 }

@@ -6,6 +6,12 @@ namespace PurrfectBlog.Controllers
 {
     public class AuthController : Controller
     {
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View(new RegisterViewModel());
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel model)

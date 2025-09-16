@@ -1,6 +1,7 @@
 ﻿using PurrfectBlog.Models;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace PurrfectBlog.Controllers
 {
@@ -41,6 +42,39 @@ namespace PurrfectBlog.Controllers
             }
 
             return RedirectToAction("Login", "Auth");
+        }
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View(new LoginViewModel());
+        }
+
+        public ActionResult Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            using (var db = new BlogDbContext())
+            {
+                var author = db.Authors.FirstOrDefault(a => a.UserName.ToLower() == model.UserName.ToLower());
+
+                if (author == null )
+                {
+                    ModelState.AddModelError("", "Username is invalid.");
+                    return View(model);
+                }
+
+                if (!System.Web.Helpers.Crypto.VerifyHashedPassword(author.HashedPassword, model.Password))
+                {
+                    ModelState.AddModelError("", "Password is invalid.");
+                    return View(model);
+                }
+
+                FormsAuthentication.SetAuthCookie(author.UserName, false);
+                return RedirectToAction("Index", "Dashboard");
+            }
         }
     }
 }

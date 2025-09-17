@@ -1,7 +1,9 @@
 ﻿using PurrfectBlog.Models;
+using PurrfectBlog.Models.ViewModels;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+
 
 namespace PurrfectBlog.Controllers
 {

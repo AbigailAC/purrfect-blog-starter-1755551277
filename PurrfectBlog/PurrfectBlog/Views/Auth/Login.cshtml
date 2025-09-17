@@ -1,0 +1,29 @@
+﻿@model PurrfectBlog.Models.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Log in To your Author Dashboard!</h2>
+
+
+<div class="container mx-w-md bg-light rounded-lg my-4">
+   @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "space-y-4" }))
+   {
+       @Html.AntiForgeryToken()
+
+       <div class="form-group">
+           @Html.LabelFor(a => a.UserName)
+           @Html.TextBoxFor(a => a.UserName, new { @class = "form-control" })
+           @Html.ValidationMessageFor(a => a.UserName, "", new { @class = "text-danger" })
+       </div>
+
+       <div class="form-group">
+           @Html.LabelFor(a => a.Password)
+           @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
+           @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
+       </div>
+
+       <button type="submit" class="btn btn-primary my-2">Log In!</button>
+   }
+</div>

@@ -78,5 +78,11 @@ namespace PurrfectBlog.Controllers
                 return RedirectToAction("Index", "Dashboard");
             }
         }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

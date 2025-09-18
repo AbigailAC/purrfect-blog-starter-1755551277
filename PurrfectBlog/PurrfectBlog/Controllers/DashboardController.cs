@@ -2,6 +2,7 @@
 
 namespace PurrfectBlog.Controllers
 {
+    [Authorize]
     public class DashboardController : Controller
     {
         public ActionResult Index()

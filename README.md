@@ -1,14 +1,19 @@
 # GenericTemplate
 
-**[Insert a brief description of your application here. Describe its purpose, functionality, etc.]**
+**Project is currently a work in progress -- right now we have a simple Dashboard and login/logout functionalities. The goal, eventually, is to house a site which uses pairwise comparisons between NBA season stats.**
 
 ## 🌐 Demo
 
 [Your Demo Link Here](http://replace-with-your-link.com)
 
 **Demo Credentials (If applicable):**
-- **Username:** ReplaceThisWithUsername
-- **Password:** ReplaceThisWithPassword
+- **Username:** Shakespeare
+- **Password:** ToBeOrNotToBe123!
+- **Username:** Hemingway
+- **Password:** TheOldManAndTheSea123!
+- **Username:** Herbert
+- **Password:** LisanAlGaib123!
+
 
 ## 📖 About this Software
 

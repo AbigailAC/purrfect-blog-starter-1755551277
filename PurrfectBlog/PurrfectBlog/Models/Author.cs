@@ -10,7 +10,6 @@ namespace PurrfectBlog.Models
         [Required]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Username must be bewtween 3 and 50 characters.")]
         [Display(Name = "Username")]
-        // TODO: Ensure usernames are unique (case insensitive) as that was a requirement listed 
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Password hash is required.")]

@@ -51,6 +51,7 @@ namespace PurrfectBlog.Controllers
             return View(new LoginViewModel());
         }
 
+        [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)

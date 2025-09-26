@@ -6,7 +6,7 @@ using System;
 namespace PurrfectBlog.Models
 {
     // We are using DropCreateDatabaseIfModelChanges for simplicity of development, will update to migrations later
-    public class BlogDbInitializer : DropCreateDatabaseAlways<BlogDbContext>
+    public class BlogDbInitializer : DropCreateDatabaseIfModelChanges<BlogDbContext>
     {
         protected override void Seed(BlogDbContext context)
         {

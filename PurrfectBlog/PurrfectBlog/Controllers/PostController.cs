@@ -9,13 +9,11 @@ namespace PurrfectBlog.Controllers
     public class PostController : Controller
     {
         private readonly BlogDbContext _context = new BlogDbContext();
-        // GET: Post/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Post/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Post post)
@@ -24,7 +22,7 @@ namespace PurrfectBlog.Controllers
             if (ModelState.IsValid)
             {
                 var username = User.Identity.Name;
-                var author = _context.Authors.FirstOrDefault(a => a.UserName == username);
+                var author = _context.Authors.FirstOrDefault(a => a.UserName.Equals(username, StringComparison.OrdinalIgnoreCase));
 
                 if (author != null)
                 {
@@ -33,11 +31,12 @@ namespace PurrfectBlog.Controllers
 
                     _context.Posts.Add(post);
                     _context.SaveChanges();
-                    // implement redirect to the post pages
+                    //TODO: implement redirect to the post details page (likely in next step)
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cannot Ffind an author for the current user");
+                    ModelState.AddModelError("", "Cannot find an author for the current user");
                 }
                
             }

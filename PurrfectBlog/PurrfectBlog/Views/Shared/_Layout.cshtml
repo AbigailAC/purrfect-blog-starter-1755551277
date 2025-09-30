@@ -25,6 +25,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Dashboard", "Index", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Create Post", "Create", "Post", new { area = ""}, new { @class = "nav-link "})</li>
                         <li>@Html.ActionLink("Log out", "Logout", "Auth", new { area = "" }, new { @class = "nav-link" })</li>
                     }
                     else

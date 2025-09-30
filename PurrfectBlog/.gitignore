@@ -16,3 +16,7 @@ x86/
 # Packages
 *.nupkg
 [Pp]ackages/
+
+# Local database files
+/PurrfectBlog/App_Data/*.mdf
+/PurrfectBlog/App_Data/*.ldf

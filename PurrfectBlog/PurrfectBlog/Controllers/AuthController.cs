@@ -66,13 +66,13 @@ namespace PurrfectBlog.Controllers
 
                 if (author == null)
                 {
-                    ModelState.AddModelError("", "Username is invalid.");
+                    ModelState.AddModelError("UserName", "Username is invalid.");
                     return View(model);
                 }
 
                 if (!System.Web.Helpers.Crypto.VerifyHashedPassword(author.HashedPassword, model.Password))
                 {
-                    ModelState.AddModelError("", "Password is invalid.");
+                    ModelState.AddModelError("Password", "Password is invalid.");
                     return View(model);
                 }
 

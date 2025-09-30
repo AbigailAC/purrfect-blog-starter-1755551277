@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Helpers;
 using System;
+using System.Linq;
 
 namespace PurrfectBlog.Models
 {
@@ -10,6 +11,12 @@ namespace PurrfectBlog.Models
     {
         protected override void Seed(BlogDbContext context)
         {
+
+            if (context.Authors.Any())
+            {
+                return;
+            }
+
             var authors = new List<Author>
             {
                 new Author { UserName = "Shakespeare", HashedPassword = Crypto.HashPassword("ToBeOrNotToBe123!") },

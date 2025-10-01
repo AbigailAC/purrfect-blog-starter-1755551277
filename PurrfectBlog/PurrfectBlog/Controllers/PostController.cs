@@ -95,14 +95,12 @@ namespace PurrfectBlog.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            var post = _context.Posts.Find(id);
+            var post = _context.Posts.Include(p => p.Author).SingleOrDefault(p => p.Id == id);
             if (post == null)
             {
                 return HttpNotFound();
             }
-
-            if (post.Author.UserName != User.Identity.Name)
+            if (post.Author == null || post.Author.UserName != User.Identity.Name)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
             }
@@ -144,7 +142,7 @@ namespace PurrfectBlog.Controllers
                 return HttpNotFound();
             }
             // Authorization Check
-            if (post.Author.UserName != User.Identity.Name)
+            if (post.Author == null || post.Author.UserName != User.Identity.Name)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
             }
@@ -160,14 +158,12 @@ namespace PurrfectBlog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var post = _context.Posts.Find(id);
+            var post = _context.Posts.Include(p => p.Author).SingleOrDefault(p => p.Id == id);
             if (post == null)
             {
-                // Post might have been deleted by another user between GET and POST (hypothetically)
                 return RedirectToAction("Index");
             }
-
-            if (post.Author.UserName != User.Identity.Name)
+            if (post.Author == null || post.Author.UserName != User.Identity.Name)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
             }
@@ -183,7 +179,7 @@ namespace PurrfectBlog.Controllers
         /// <param name="disposing">True to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (disposing)      
             {
                 _context.Dispose();
             }

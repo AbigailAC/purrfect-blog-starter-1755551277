@@ -71,7 +71,6 @@ namespace PurrfectBlog.Controllers
 
                     _context.Posts.Add(post);
                     _context.SaveChanges();
-                    //TODO: implement redirect to the post details page (likely in next step)
                     return RedirectToAction("Details", new { id = post.Id });
                 }
                 else

@@ -20,6 +20,7 @@
 
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Posts", "Index", "Post", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     @if (User.Identity.IsAuthenticated)
@@ -42,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - PURRFECT Blog</p>
         </footer>
     </div>
 

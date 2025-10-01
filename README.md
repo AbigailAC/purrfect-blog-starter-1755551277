@@ -17,9 +17,9 @@ Live Demo coming soon!
 
 ## 📖 About this Software
 
-Purrfect Blog is a web application built using the ASP.NET MVC and Entity Framework. It was created as part of the 
+Purrfect Blog is a web application built using the ASP.NET MVC and Entity Framework. It was created as part of the Relativity Academy task. 
 
-The core functionality allows authors to register, log in, and manage their own blog posts. The application features a clean, responsive front-end styled with Bootstrap and a secure backend that ensures data integrity and proper user authorization.
+The core functionality allows authors to register, log in, and manage their own blog posts. Users can create posts, edit posts, delete posts, and view a list of all posts and individual post details.
 
 ### Features:
 
@@ -66,7 +66,7 @@ If you're planning to present this project to potential employers or external pa
 To ensure high-quality projects, we recommend adhering to the following best practices:
 
 1.  **Gitflow:** Always use pull requests (PRs) for introducing new features or changes. This helps in maintaining a clean commit history and enables peer reviews.
-2.  **Commit Formatting:** Follow a commit convention such as [Conventional Commits](https://www.conventionalcommits.org/). It makes the commit history readable and easy to understand.
+2.  **Commit Formatting:** Follow a commit convention such as Git convention or [Conventional Commits](https://www.conventionalcommits.org/). It makes the commit history readable and easy to understand.
 3.  **Test Coverage:** Aim for a minimum test coverage of 80-90%. This ensures that the majority of your code is tested, reducing potential bugs and regressions.
 4.  **Comprehensive README:** A well-documented README provides clarity about the project's purpose, usage, and maintenance.
 5.  **Live Demo:** Always provide a live demo with login credentials (if applicable). It offers a hands-on experience of your application to users or potential employers.

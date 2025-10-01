@@ -75,7 +75,7 @@ namespace PurrfectBlog.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Oops! An error occured. Unable to associate post with a valid author. If this continues happening, please contact ");
+                    ModelState.AddModelError("", "Oops! An error occured. Unable to associate post with a valid author. If this continues happening, please contact us");
                 }
                
             }

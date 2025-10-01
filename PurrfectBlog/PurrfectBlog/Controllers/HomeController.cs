@@ -28,7 +28,7 @@ namespace PurrfectBlog.Controllers
         /// <returns>The About view.</returns>
         public ActionResult About()
         {
-            ViewBag.Message = "My application description.";
+            ViewBag.Message = "Your application description page";
 
             return View();
         }
@@ -38,7 +38,7 @@ namespace PurrfectBlog.Controllers
         /// <returns>The contact view.</returns>
         public ActionResult Contact()
         {
-            ViewBag.Message = "My Contact page.";
+            ViewBag.Message = "Your Contact page.";
 
             return View();
         }

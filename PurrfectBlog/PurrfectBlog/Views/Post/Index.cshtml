@@ -1,0 +1,38 @@
+@model IEnumerable<PurrfectBlog.Models.Post>
+
+@{
+    ViewBag.Title = "All Posts";
+}
+
+<div class="container">
+    <h2 class="text-center mt-4 mb-4">@ViewBag.Title</h2>
+
+    @if (!Model.Any())
+    {
+        // If this displays there is an error, as posts should be seeded
+        <p class="text-center text-muted">No posts have been created yet. Be the first!</p>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h3>
+                    <p class="card-subtitle mb-2 text-muted">
+                        By @Html.DisplayFor(modelItem => item.Author.UserName) on @item.CreationDate.ToShortDateString()
+                    </p>
+
+                    <p class="card-text">
+                        @{
+                            var excerpt = item.Content.Length > 200 ? item.Content.Substring(0, 200) + "..." : item.Content;
+                        }
+                        @excerpt
+                    </p>
+
+                    @Html.ActionLink("Read More", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        }
+    }
+</div>

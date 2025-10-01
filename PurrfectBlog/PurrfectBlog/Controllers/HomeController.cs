@@ -28,7 +28,7 @@ namespace PurrfectBlog.Controllers
         /// <returns>The About view.</returns>
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page";
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }

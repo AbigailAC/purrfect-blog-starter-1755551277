@@ -5,12 +5,21 @@
 }
 
 <div class="container">
-    <h2 class="text-center mt-4 mb-4">@ViewBag.Title</h2>
+    <div class="text-center my-4">
+        <h1>@ViewBag.Title</h1>
+        <p class="lead text-muted">Browse our collection of purrfect stories and tips.</p>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
 
     @if (!Model.Any())
     {
-        // If this displays there is an error, as posts should be seeded
-        <p class="text-center text-muted">No posts have been created yet. Be the first!</p>
+        <p class="text-center">No posts have been created yet. Be the first!</p>
     }
     else
     {

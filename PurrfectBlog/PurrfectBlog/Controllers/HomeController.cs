@@ -9,10 +9,9 @@ namespace PurrfectBlog.Controllers
     {
         private readonly BlogDbContext _context = new BlogDbContext();
 
-        /// <summary>
-        /// 
+        /// Displays the home page with the three most recent blog posts.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A view showing the recent blog posts.</returns>
         public ActionResult Index()
         {
             var recentPosts = _context.Posts
@@ -24,10 +23,9 @@ namespace PurrfectBlog.Controllers
             return View(recentPosts);
         }
 
-        /// <summary>
-        /// 
+        /// Displays the About page for the application.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The About view.</returns>
         public ActionResult About()
         {
             ViewBag.Message = "My application description.";
@@ -35,10 +33,9 @@ namespace PurrfectBlog.Controllers
             return View();
         }
 
-        /// <summary>
-        /// 
+        /// Displays the contact page.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The contact view.</returns>
         public ActionResult Contact()
         {
             ViewBag.Message = "My Contact page.";
@@ -46,10 +43,9 @@ namespace PurrfectBlog.Controllers
             return View();
         }
 
-        /// <summary>
-        /// 
+        /// Releases the unmanaged resources used by the HomeController and optionally disposes of the managed resources.
         /// </summary>
-        /// <param name="disposing"></param>
+        /// <param name="disposing">True to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

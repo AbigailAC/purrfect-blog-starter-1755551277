@@ -6,9 +6,7 @@ using System.Data.Entity;
 
 namespace PurrfectBlog.Controllers
 {
-    /// <summary>
-    /// 
-    /// </summary>
+    /// Controller responsible for managing blog posts, including listing, viewing details, creating posts, and associating posts with authors.
     [Authorize]
     public class PostController : Controller
     {
@@ -24,11 +22,12 @@ namespace PurrfectBlog.Controllers
             return View(posts);
         }
 
-        /// <summary>
-        /// 
+        /// Displays the details of a specific blog post identified by its ID.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">The unique identifier of the blog post to display. If null, a BadRequest result is returned.</param>
+        /// <returns>
+        /// Returns the details view for the specified post if found; otherwise, returns a BadRequest or NotFound result.
+        /// </returns>
         [AllowAnonymous]
         public ActionResult Details(int? id)
         {
@@ -49,11 +48,13 @@ namespace PurrfectBlog.Controllers
             return View();
         }
 
-        /// <summary>
-        /// 
+        /// Handles the creation of a new blog post. If the model is valid and an author is found,
+        /// the post is saved and the user is redirected to the details page. Otherwise, displays validation errors.
         /// </summary>
-        /// <param name="post"></param>
-        /// <returns></returns>
+        /// <param name="post">The post data submitted by the user.</param>
+        /// <returns>
+        /// Redirects to the details page of the newly created post if successful; otherwise, returns the view with validation errors.
+        /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Post post)
@@ -75,17 +76,16 @@ namespace PurrfectBlog.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Oops! An error occured. Unable to associate post with a valid author. If this continues happening, please contact us");
+                    ModelState.AddModelError("", "Oops! An error occurred. Unable to associate post with a valid author. If this continues happening, please contact us");
                 }
                
             }
             return View(post);
         }
 
-        /// <summary>
-        /// 
+        /// Releases the unmanaged resources used by the controller and optionally disposes of the managed resources.
         /// </summary>
-        /// <param name="disposing"></param>
+        /// <param name="disposing">True to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

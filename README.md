@@ -3,9 +3,10 @@
 A classic, fully functional blog application built with ASP.NET MVC 5 and Entity Framework 6. This project demonstrates the core principles of a CRUD (Create, Read, Update, Delete) application, allowing users to register as authors, create posts about their feline friends (or enemies?), and manage their content in a secure and intuitive way.
 
 
-## 🌐 Demo
+### 📹 Demo Video
+Watch the full demo video to see all features in action:
 
-Live Demo coming soon!
+[![Demo Video](https://img.shields.io/badge/📹-Watch%20Demo%20Video-blue)](https://github.com/AbigailAC/purrfect-blog-starter-1755551277/releases/download/v1.0.0/demo.mp4)
 
 **Demo Credentials:**
 - **Username:** Shakespeare

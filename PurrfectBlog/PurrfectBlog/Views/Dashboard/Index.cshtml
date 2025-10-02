@@ -1,10 +1,89 @@
-﻿
+﻿@model PurrfectBlog.Models.ViewModels.DashboardViewModel
+
 @{
     ViewBag.Title = "Dashboard";
 }
-<div class="container mx-w-md bg-light rounded-lg my-4">
- 
-    <h2 class="text-xl-center">Hi, @User.Identity.Name!</h2>
-    <p>This is the Author Dashboard, which we're adding many pawsome features to in the future.</p>
-    <p>I hope you enjoy the site, and feel free to reach out to <a href="https://github.com/AbigailAC" target="_blank" rel="noopener">AbigailAC</a> (that's me) on Github!</p>
+
+<div class="jumbotron text-center">
+    <h1>Welcome back, @Model.UserName!</h1>
+    <p class="lead">Manage your blog posts and track your activity.</p>
 </div>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Total Posts</h5>
+                <p class="card-text fs-4">@Model.TotalPosts</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Comments Received</h5>
+                <p class="card-text fs-4">@Model.TotalCommentsReceived</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <h5 class="card-title">Most Recent Post</h5>
+                <p class="card-text fs-4">@(Model.UserPosts.FirstOrDefault()?.CreationDate.ToShortDateString() ?? "N/A")</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="text-center mb-4">Your Posts</h2>
+        <div class="text-center mb-3">
+            @Html.ActionLink("Create New Post", "Create", "Post", null, new { @class = "btn btn-primary btn-lg" })
+        </div>
+    </div>
+</div>
+
+@if (!Model.UserPosts.Any())
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <p class="text-muted fs-5">You haven't created any posts yet.</p>
+                <p>@Html.ActionLink("Create your first post now!", "Create", "Post", null, new { @class = "btn btn-outline-primary" })</p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var post in Model.UserPosts)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@post.Title</h5>
+                        <p class="card-text text-muted">
+                            <small>Created on @post.CreationDate.ToShortDateString()</small>
+                        </p>
+                        <p class="card-text">
+                            @{
+                                var excerpt = post.Content.Length > 100 ? post.Content.Substring(0, 100) + "..." : post.Content;
+                            }
+                            @excerpt
+                        </p>
+                        <div class="mt-auto">
+                            <div class="btn-group w-100" role="group">
+                                @Html.ActionLink("View", "Details", "Post", new { id = post.Id }, new { @class = "btn btn-outline-primary" })
+                                @Html.ActionLink("Edit", "Edit", "Post", new { id = post.Id }, new { @class = "btn btn-outline-secondary" })
+                                @Html.ActionLink("Delete", "Delete", "Post", new { id = post.Id }, new { @class = "btn btn-outline-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

@@ -31,7 +31,7 @@ The core functionality allows authors to register, log in, and manage their own 
 6.  **Data Persistence:** Uses Entity Framework and a LocalDB SQL Server database to reliably store all user and post data.
 
 ### WIP:
-1. **Adding test coverage
+1. **Adding test coverage**
 2. **Add commenting**
 3. **Add OAuth**
 4. **Add upvotes/downvotes akin to sites like Reddit**

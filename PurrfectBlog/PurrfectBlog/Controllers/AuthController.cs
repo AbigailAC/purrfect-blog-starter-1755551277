@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using PurrfectBlog.Constants;
 using PurrfectBlog.Models;
 using PurrfectBlog.Models.ViewModels;
 
@@ -40,7 +41,7 @@ namespace PurrfectBlog.Controllers
             {
                 if (db.Authors.Any(author => author.UserName.Equals(model.UserName, StringComparison.OrdinalIgnoreCase)))
                 {
-                    ModelState.AddModelError("UserName", "Sorry, this username is pawlready taken!");
+                    ModelState.AddModelError("UserName", ErrorMessages.UsernameAlreadyTaken);
                     return View(model);
                 }
 
@@ -55,7 +56,7 @@ namespace PurrfectBlog.Controllers
                 db.SaveChanges();
             }
 
-            return RedirectToAction("Login", "Auth");
+            return RedirectToAction(ActionNames.Login, ControllerNames.Auth);
         }
         /// <summary>
         /// Displays the user login form.
@@ -86,18 +87,18 @@ namespace PurrfectBlog.Controllers
 
                 if (author == null)
                 {
-                    ModelState.AddModelError("UserName", "Username is invalid.");
+                    ModelState.AddModelError("UserName", ErrorMessages.InvalidUsername);
                     return View(model);
                 }
 
                 if (!System.Web.Helpers.Crypto.VerifyHashedPassword(author.HashedPassword, model.Password))
                 {
-                    ModelState.AddModelError("Password", "Password is invalid.");
+                    ModelState.AddModelError("Password", ErrorMessages.InvalidPassword);
                     return View(model);
                 }
 
                 FormsAuthentication.SetAuthCookie(author.UserName, false);
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction(ActionNames.Index, ControllerNames.Dashboard);
             }
         }
 
@@ -108,7 +109,7 @@ namespace PurrfectBlog.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(ActionNames.Index, ControllerNames.Home);
         }
     }
 }

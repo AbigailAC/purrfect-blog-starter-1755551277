@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using PurrfectBlog.Constants;
 using PurrfectBlog.Models;
 
 namespace PurrfectBlog.Controllers
@@ -74,11 +75,11 @@ namespace PurrfectBlog.Controllers
 
                     _context.Posts.Add(post);
                     _context.SaveChanges();
-                    return RedirectToAction("Details", new { id = post.Id });
+                    return RedirectToAction(ActionNames.Details, new { id = post.Id });
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Oops! An error occurred. Unable to associate post with a valid author.");
+                    ModelState.AddModelError("", ErrorMessages.AuthorAssociationFailed);
                 }
             }
             return View(post);
@@ -120,7 +121,7 @@ namespace PurrfectBlog.Controllers
             {
                 _context.Entry(post).State = EntityState.Modified;
                 _context.SaveChanges();
-                return RedirectToAction("Details", new { id = post.Id });
+                return RedirectToAction(ActionNames.Details, new { id = post.Id });
             }
             return View(post);
         }
@@ -169,8 +170,8 @@ namespace PurrfectBlog.Controllers
             }
             _context.Posts.Remove(post);
             _context.SaveChanges();
-            TempData["SuccessMessage"] = "Post successfully deleted.";
-            return RedirectToAction("Index");
+            TempData["SuccessMessage"] = ErrorMessages.PostDeletedSuccessfully;
+            return RedirectToAction(ActionNames.Index);
         }
 
         /// <summary>

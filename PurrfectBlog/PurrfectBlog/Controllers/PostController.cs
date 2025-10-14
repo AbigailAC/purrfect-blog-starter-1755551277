@@ -71,7 +71,7 @@ namespace PurrfectBlog.Controllers
                 if (author != null)
                 {
                     post.AuthorId = author.Id;
-                    post.CreationDate = DateTime.Now;
+                    post.CreationDate = DateTime.UtcNow; // Use UTC for consistency across timezones
 
                     _context.Posts.Add(post);
                     _context.SaveChanges();

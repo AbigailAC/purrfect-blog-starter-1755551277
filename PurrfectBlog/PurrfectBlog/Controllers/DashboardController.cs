@@ -1,16 +1,23 @@
-﻿using System.Web.Mvc;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 using PurrfectBlog.Models;
 using PurrfectBlog.Models.ViewModels;
-using System.Linq;
-using System.Data.Entity;
 
 namespace PurrfectBlog.Controllers
 {
+    /// <summary>
+    /// Controller responsible for handling the user dashboard functionality.
+    /// </summary>
     [Authorize]
     public class DashboardController : Controller
     {
         private readonly BlogDbContext _context = new BlogDbContext();
 
+        /// <summary>
+        /// Displays the user dashboard with their posts and statistics.
+        /// </summary>
+        /// <returns>The dashboard view with user's posts and statistics.</returns>
         public ActionResult Index()
         {
             // Get the current user's username from session or authentication

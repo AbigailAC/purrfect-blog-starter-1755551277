@@ -1,14 +1,18 @@
-﻿using PurrfectBlog.Models;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using System.Data.Entity;
+using PurrfectBlog.Models;
 
 namespace PurrfectBlog.Controllers
 {
+    /// <summary>
+    /// Controller responsible for handling home page functionality including displaying recent blog posts.
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly BlogDbContext _context = new BlogDbContext();
 
+        /// <summary>
         /// Displays the home page with the three most recent blog posts.
         /// </summary>
         /// <returns>A view showing the recent blog posts.</returns>
@@ -23,6 +27,7 @@ namespace PurrfectBlog.Controllers
             return View(recentPosts);
         }
 
+        /// <summary>
         /// Displays the About page for the application.
         /// </summary>
         /// <returns>The About view.</returns>
@@ -33,6 +38,7 @@ namespace PurrfectBlog.Controllers
             return View();
         }
 
+        /// <summary>
         /// Displays the contact page.
         /// </summary>
         /// <returns>The contact view.</returns>

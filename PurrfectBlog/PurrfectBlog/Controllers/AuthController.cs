@@ -1,10 +1,9 @@
-﻿using PurrfectBlog.Models;
-using PurrfectBlog.Models.ViewModels;
-using System;
+﻿using System;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
-
+using PurrfectBlog.Models;
+using PurrfectBlog.Models.ViewModels;
 
 namespace PurrfectBlog.Controllers
 {

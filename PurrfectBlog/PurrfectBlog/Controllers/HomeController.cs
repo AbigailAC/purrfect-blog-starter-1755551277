@@ -1,7 +1,7 @@
-﻿using PurrfectBlog.Models;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using System.Data.Entity;
+using PurrfectBlog.Models;
 
 namespace PurrfectBlog.Controllers
 {

@@ -1,8 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 using PurrfectBlog.Models;
 using PurrfectBlog.Models.ViewModels;
-using System.Linq;
-using System.Data.Entity;
 
 namespace PurrfectBlog.Controllers
 {
